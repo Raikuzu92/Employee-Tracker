@@ -1,0 +1,23 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "CLI application to track employees",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Raikuzu92/Employee-Tracker.git"
+  },
+  "author": "Robert Green",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Raikuzu92/Employee-Tracker/issues"
+  },
+  "homepage": "https://github.com/Raikuzu92/Employee-Tracker#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4",
+    "pg": "^8.12.0"
+  }
+}

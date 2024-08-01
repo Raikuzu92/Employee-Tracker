@@ -1,7 +1,7 @@
 const pool = require('./connection');
 
 class DB {
-  constructor() {}
+  constructor() { }
 
   async query(sql, args = []) {
     const client = await pool.connect();
@@ -12,9 +12,8 @@ class DB {
       client.release();
     }
   }
-
-}
-
-findAllEmployees() {
+  findAllEmployees() {
     return this.query();
+  };
+
 };
