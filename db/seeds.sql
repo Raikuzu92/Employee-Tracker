@@ -14,7 +14,7 @@ VALUES (1, 'housekeeper', 35,000, 2),
        (5, 'receptionist', 50,000, 4);
 
 
-INSERT INTO roles (id, first_name, last_name, role_id, manager_id)
+INSERT INTO employee (id, first_name, last_name, role_id, manager_id)
 VALUES (1, 'Matt', 'Hollis', 4, 5),
        (2, 'Kate', 'Wilson', 5, 1),
        (3, 'Xavier', 'Nelson', 1, 2),
@@ -24,7 +24,7 @@ VALUES (1, 'Matt', 'Hollis', 4, 5),
        (7, 'Jennifer', 'Tilly', 1, 4),
        (8, 'Robin', 'Lopez', 4, 5),
        (9, 'Nick', 'Bosa', 5, 1),
-       (10 'Marcus', 'Taylor', 2, 4);
+       (10, 'Marcus', 'Taylor', 2, 4);
 
      
        

@@ -1,5 +1,6 @@
 const inquirer = require("inquirer");
 const db = require('./db');
+const pool = require('./db/connection');
 
 init();
 
@@ -42,6 +43,9 @@ function loadMainPrompts() {
             case 'ADD_ROLE':
                 addRole();
                 break;
+                case 'UPDATE_ROLE':
+                updateRole();
+                break;
             case 'ADD_EMPLOYEE':
                 addEmployee();
                 break;
@@ -56,7 +60,7 @@ function loadMainPrompts() {
 
 function findAllEmployees() {
     const query = "SELECT employee.id, employee.first_name, employee.last_name, role.title FROM employee JOIN role ON employee.role_id = role.id";
-    db.query(query, (err, res) => {
+    db.findAllEmployees(query, (err, res) => {
         if (err) throw err;
         console.table(res);
         loadMainPrompts();
@@ -92,7 +96,7 @@ function updateRoles() {
 
 function viewAllDepartments() {
     const query = "SELECT id, name FROM department";
-    db.query(query, (err, res) => {
+    db.viewAllDepartments(query, (err, res) => {
         if (err) throw err;
         console.table(res);
         loadMainPrompts();
@@ -110,7 +114,7 @@ function addDepartment() {
 
 function addEmployee() {
     const query = "INSERT INTO employee (first_name, last_name) VALUES ('John', 'Doe')";
-    db.query(query, (err, res) => {
+    db.addEmployee(query, (err, res) => {
         if (err) throw err;
         console.log("New employee added successfully.");
         loadMainPrompts();
