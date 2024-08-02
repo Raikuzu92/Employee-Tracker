@@ -59,30 +59,30 @@ function loadMainPrompts() {
 }
 
 function findAllEmployees() {
-    const query = "SELECT employee.id, employee.first_name, employee.last_name, role.title FROM employee JOIN role ON employee.role_id = role.id";
+    const query = "SELECT employee.id, employee.first_name, employee.last_name, roles.title FROM employee JOIN roles ON employee.role_id = roles.id";
     db.findAllEmployees(query, (err, res) => {
         if (err) throw err;
         console.table(res);
         loadMainPrompts();
-    });
+    }).then( ({rows}) => {console.table(rows)})
 }
 
 function updateEmployee() {
     const query = "UPDATE employee SET first_name = 'NewName' WHERE id = 1";
-    db.query(query, (err, res) => {
+    db.updateEmployee(query, (err, res) => {
         if (err) throw err;
         console.log("Employee updated successfully.");
         loadMainPrompts();
-    });
+    }).then( ({rows}) => {console.table(rows)})
 }
 
 function viewRoles() {
-    const query = "SELECT employee.first_name, employee.last_name, role.title FROM employee JOIN role ON employee.role_id = role.id";
-    db.query(query, (err, res) => {
+    const query = "SELECT employee.first_name, employee.last_name, roles.title FROM employee JOIN roles ON employee.role_id = roles.id";
+    db.viewRoles(query, (err, res) => {
         if (err) throw err;
         console.table(res);
         loadMainPrompts();
-    });
+    }).then( ({rows}) => {console.table(rows)})
 }
 
 function updateRoles() {
@@ -95,21 +95,21 @@ function updateRoles() {
 }
 
 function viewAllDepartments() {
-    const query = "SELECT id, name FROM department";
+    const query = "SELECT id, department_name FROM department";
     db.viewAllDepartments(query, (err, res) => {
         if (err) throw err;
         console.table(res);
         loadMainPrompts();
-    });
+    }).then( ({rows}) => {console.table(rows)})
 }
 
 function addDepartment() {
     const query = "INSERT INTO department (name) VALUES ('New Department')";
-    db.query(query, (err, res) => {
+    db.addDepartment(query, (err, res) => {
         if (err) throw err;
         console.log("New department added successfully.");
         loadMainPrompts();
-    });
+    }).then( ({rows}) => {console.table(rows)})
 }
 
 function addEmployee() {
@@ -118,5 +118,5 @@ function addEmployee() {
         if (err) throw err;
         console.log("New employee added successfully.");
         loadMainPrompts();
-    });
+    }).then( ({rows}) => {console.table(rows)})
 }
